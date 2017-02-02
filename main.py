@@ -1,15 +1,10 @@
-from applicants_status import applicants_status
-from build import BuildTable
-from applicants_school import applicants_school
-from applicant_interview_details import *
-
 import os
 from create_table import CreateTable
 from applicant_generator import ApplicantGenerator
 from mentor_details import MentorDetails
 from applicant_details import ApplicantDetails
 
-
+# take this to the ui class
 def clear_sreen():
     os.system('cls' if os.name == 'nt' else 'clear')
 

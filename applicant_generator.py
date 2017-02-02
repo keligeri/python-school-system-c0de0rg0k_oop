@@ -1,4 +1,3 @@
-"""Az interview_slot a mostnai idő miatt marad false, a next step az applicant_code generálás """
 from models import *
 from datetime import datetime
 from app_code_generator import AppCodeGenerator

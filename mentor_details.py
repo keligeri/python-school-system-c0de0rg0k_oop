@@ -2,9 +2,9 @@ from models import *
 
 
 class MentorDetails:
+    """This class give back the necessary details for the mentors menu"""
 
     def __init__(self):
-        # self.mentor_interview_slot = ""
         self.mentor_id = 0
 
     def mentor_date_time(self):

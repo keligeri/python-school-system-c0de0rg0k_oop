@@ -3,8 +3,8 @@ from models import *
 
 
 class AppCodeGenerator:
-    """This class generate the application code. First, generate the application_code,
-        then compare the earlier password, if the current app code equal with the earlier, generate a new one"""
+    """ This class generate the application code. First, generate the application_code,
+        then compare the earlier password, if the current app code equal with the earlier, generate a new one """
 
     def __init__(self):
         # First, generate the application_code, then compare the earlier password

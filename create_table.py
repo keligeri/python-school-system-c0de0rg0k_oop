@@ -2,7 +2,7 @@ from models import *
 
 
 class CreateTable:
-    """This class generate the example data from files"""
+    """This class create table and generate the example data from files"""
 
     def __init__(self, city_file_name="example_data/city.txt", school_file_name="example_data/school.txt",
                  mentors_file_name="example_data/mentor.txt",

@@ -2,6 +2,8 @@ from models import *
 
 
 class ApplicantDetails:
+    """ This class can print out the applications interview-, status- and school-details,
+        based on the application code """
 
     def __init__(self):
         self.application_code = ""

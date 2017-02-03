@@ -11,6 +11,9 @@ class SetConnection:
     def __read_files(self):
         with open(self.file_name) as f:
             line = f.readline().split(",")
-            self.dbname = line[0]
-            self.username = line[1]
+            if len(line) == 1:
+                self.username = line[0]
+            else:
+                self.dbname = line[0]
+                self.username = line[1]
 

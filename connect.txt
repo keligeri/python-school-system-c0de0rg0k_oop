@@ -1,1 +1,1 @@
-school_system,keli
+school_system,keli, -->  db_name, username!! U can use the db_name too, if U want the pgadmin to create a new db

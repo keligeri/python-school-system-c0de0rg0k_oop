@@ -9,10 +9,16 @@ class MentorDetails:
 
     def mentor_date_time(self):
         self.__input_mentor_id()
+        self.__check_mentor_id()        # Check the mentor id, raise error if that mentor_id is not in the table
         self.__print_datetime()
 
     def __input_mentor_id(self):
         self.mentor_id = int(input("Please tell me your mentor id: "))
+
+    def __check_mentor_id(self):
+        mentors = Mentor.select().where(Mentor.id == self.mentor_id)
+        if len(mentors) == 0:
+            raise ValueError
 
     def __print_datetime(self,):
         interview_slot = InterviewSlot.select()

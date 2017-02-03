@@ -1,147 +1,129 @@
-import os
 from create_table import CreateTable
 from applicant_generator import ApplicantGenerator
 from mentor_details import MentorDetails
 from applicant_details import ApplicantDetails
-
-# take this to the ui class
-def clear_sreen():
-    os.system('cls' if os.name == 'nt' else 'clear')
+from ui import UserInterface
 
 
 def main():
 
     chosen_menu = 'q'
-    clear_sreen()
-    while chosen_menu != 0:
-        print("\n- - - School system - Main Menu - - -\n-------------------------------------")
-        print("1. I am an administrator")
-        print("2. I am a mentor")
-        print("3. I am an applicant")
-        print("0. Exit")
-        print("-------------------------------")
-        chosen_menu = int(input("Please choose a menu number: "))
+    ui = UserInterface()
+    ui.clear_sreen()
 
-        if chosen_menu == 1:
+    while chosen_menu != '0':
+        ui.print_main_menu()
+        chosen_menu = ui.choose_menu_number()
+
+        if chosen_menu == "1":
             # Create the necessary instances
             create_and_upload_table = CreateTable()
-            generate_applicants = ApplicantGenerator()
-
-            clear_sreen()
+            generate_applicants = ApplicantGenerator("example_data/applicant.txt")
+            ui.clear_sreen()
             chosen_administrator_menu = 'q'
-            while chosen_administrator_menu != 0:
-                print("\n- - - School system - Administrator Menu - - -\n-------------------------------------")
-                print("1. Create tables")
-                print("2. Generate data")
-                print("3. Generate applicants")
-                print("4. Generate interview date to applicants")
-                print("0. Exit")
-                print("-------------------------------------")
-                chosen_administrator_menu = int(input("Please choose an Administrator menu number: "))
 
-                if chosen_administrator_menu == 1:
+            while chosen_administrator_menu != "0":
+                ui.print_administrator_menu()
+                chosen_administrator_menu = ui.choose_administrator_menu_number()
+
+                if chosen_administrator_menu == "1":
                     try:
                         create_and_upload_table.create_table()
-                        print("Tables created succcessfully")
+                        print("Tables created successfully")
                     except:
                         print("I can't create tables")
 
-                elif chosen_administrator_menu == 2:
+                elif chosen_administrator_menu == "2":
                     try:
                         create_and_upload_table.generate_example_data()
                         print("Data successfully generated and inserted")
                     except:
                         print("I can't Generate example data")
 
-                elif chosen_administrator_menu == 3:
+                elif chosen_administrator_menu == "3":
                     try:
-                        generate_applicants.generate_applicant("example_data/applicant.txt")
+                        generate_applicants.generate_applicant()
                         print("Applicants data successfully generated and inserted")
                     except:
-                        print("I can't Generate applicants")
+                           print("I can't Generate applicants")
 
-                elif chosen_administrator_menu == 4:
-                    # try:
-                    generate_applicants.generate_nearest_school()
-                    generate_applicants.generate_interview_for_applicants()
+                elif chosen_administrator_menu == "4":
+                    try:
+                        generate_applicants.generate_nearest_school()
+                        generate_applicants.generate_interview_for_applicants()
 
-                    print("Interview dates successfully generated to applicants")
-                    # except:
-                    #    print("Something went wrong. I can't generate interview dates to applicants")
+                        print("Interview dates successfully generated to applicants")
+                    except:
+                        print("Something went wrong. I can't generate interview dates to applicants")
 
-                elif chosen_administrator_menu == 0:
-                    clear_sreen()
+                elif chosen_administrator_menu == "0":
+                    ui.clear_sreen()
                     break
 
                 else:
                     print("Wrong menu number was given")
 
-        elif chosen_menu == 2:
+        elif chosen_menu == "2":
             mentor_details = MentorDetails()
-            clear_sreen()
+            ui.clear_sreen()
             chosen_mentor_menu = 'q'
-            while chosen_mentor_menu != 0:
-                print("\n- - - School system - Mentor Menu - - -\n-------------------------------------")
-                print("1. Interviews")
-                print("0. Exit")
-                print("-------------------------------------")
-                chosen_mentor_menu = int(input("Please choose a Mentor menu number: "))
-                if chosen_mentor_menu == 1:
+
+            while chosen_mentor_menu != "0":
+                ui.print_mentor_menu()
+                chosen_mentor_menu = ui.choose_mentor_menu_number()
+
+                if chosen_mentor_menu == '1':
                     try:
                         mentor_details.mentor_date_time()
                     except:
                         print("There is no mentor with that id")
 
-                elif chosen_mentor_menu == 0:
-                    clear_sreen()
+                elif chosen_mentor_menu == '0':
+                    ui.clear_sreen()
                     break
-
                 else:
                     print("Wrong menu number was given")
 
-        elif chosen_menu == 3:
+        elif chosen_menu == '3':
             # Create instances
             applicant_detail = ApplicantDetails()
-
-            clear_sreen()
+            ui.clear_sreen()
             chosen_applicant_menu = 'q'
-            while chosen_applicant_menu != 0:
-                print("\n- - - School system - Applicant Menu - - -\n-------------------------------------")
-                print("1. Interview details")
-                print("2. Status details")
-                print("3. School details")
-                print("0. Exit")
-                print("-------------------------------------")
-                chosen_applicant_menu = int(input("Please choose an Applicant menu number: "))
 
-                if chosen_applicant_menu == 1:
-                    applicant_detail.interview_details()
+            while chosen_applicant_menu != '0':
+                ui.print_applicant_menu()
+                chosen_applicant_menu = ui.choose_applicant_menu_number()
 
-                elif chosen_applicant_menu == 2:
+                if chosen_applicant_menu == '1':
                     try:
-                        applicant_detail.status_details()
-                        # print("Your application status is", status)
+                        applicant_detail.interview_details()
                     except:
                         print("There is no application code like that in the database. Please try again")
 
-                elif chosen_applicant_menu == 3:
+                elif chosen_applicant_menu == '2':
+                    try:
+                        applicant_detail.status_details()
+                    except:
+                        print("There is no application code like that in the database. Please try again")
+
+                elif chosen_applicant_menu == '3':
                     try:
                         applicant_detail.school_details()
                     except:
                         print("There is no application code like that in the database. Please try again")
-                elif chosen_applicant_menu == 0:
-                    clear_sreen()
+
+                elif chosen_applicant_menu == '0':
+                    ui.clear_sreen()
                     break
 
                 else:
                     print("Wrong menu number was given")
 
-        elif chosen_menu == 0:
-            print("\n------------------------------------------------------------")
-            print("| Thanks for choosing Codeorgo Software! See you next time!|")
-            print("------------------------------------------------------------")
+        elif chosen_menu == '0':
+            ui.print_say_hello()
         else:
             print("Wrong menu number was given")
 
 
-main()
+if __name__ == '__main__':
+    main()

@@ -11,8 +11,11 @@ class ApplicantGenerator:
         which update the Interview table with applicant, then update the Interview table with the
         suitable slot_id """
 
-    def generate_applicant(self, file_name):
-        applicants_list = self.__read_applicant_from_file(file_name)
+    def __init__(self, file_name):
+        self.file_name = file_name
+
+    def generate_applicant(self):
+        applicants_list = self.__read_applicant_from_file()
         self.__update_applicant_table(applicants_list)
         self.__generate_application_code()
 
@@ -30,9 +33,8 @@ class ApplicantGenerator:
 
         self.__search_mentor_for_interviewslot()
 
-
-    def __read_applicant_from_file(self, file_name):
-        with open(file_name, "r") as f:
+    def __read_applicant_from_file(self):
+        with open(self.file_name, "r") as f:
             lines = f.readlines()
             applicant_list = []
 

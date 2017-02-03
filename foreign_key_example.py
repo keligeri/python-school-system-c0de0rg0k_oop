@@ -4,8 +4,7 @@ from models import *
 applicants = Applicant.select()
 for app in applicants:
     for interview in app.applicants_interviews:
-        # azért kell if, mert nincsen minden applicant-nak interview_slotja
-        if interview.slot_id is not None:
+        if interview.slot_id is not None:   # need it, because hasn't got interview_slot for every applicants
             print(interview.slot_id.start_time)
 
 # Another example

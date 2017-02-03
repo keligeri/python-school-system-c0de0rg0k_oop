@@ -12,7 +12,7 @@ def main():
     ui.clear_sreen()
 
     while chosen_menu != '0':
-        ui.print_main_menu()
+        ui.show_main_menu()
         chosen_menu = ui.choose_menu_number()
 
         if chosen_menu == "1":
@@ -23,45 +23,44 @@ def main():
             chosen_administrator_menu = 'q'
 
             while chosen_administrator_menu != "0":
-                ui.print_administrator_menu()
+                ui.show_administrator_menu()
                 chosen_administrator_menu = ui.choose_administrator_menu_number()
 
                 if chosen_administrator_menu == "1":
                     try:
                         create_and_upload_table.create_table()
-                        print("Tables created successfully")
+                        ui.show_generetad_data("Tables", False)
                     except:
-                        print("I can't create tables")
+                        ui.show_cant_generate_data("tables")
 
                 elif chosen_administrator_menu == "2":
                     try:
                         create_and_upload_table.generate_example_data()
-                        print("Data successfully generated and inserted")
+                        ui.show_generetad_data("Example data")
                     except:
-                        print("I can't Generate example data")
+                        ui.show_cant_generate_data("example data")
 
                 elif chosen_administrator_menu == "3":
                     try:
                         generate_applicants.generate_applicant()
-                        print("Applicants data successfully generated and inserted")
+                        ui.show_generetad_data("Applicants data")
                     except:
-                           print("I can't Generate applicants")
+                        ui.show_cant_generate_data("applicants data")
 
                 elif chosen_administrator_menu == "4":
                     try:
                         generate_applicants.generate_nearest_school()
                         generate_applicants.generate_interview_for_applicants()
-
-                        print("Interview dates successfully generated to applicants")
+                        ui.show_generetad_data("Interview dates")
                     except:
-                        print("Something went wrong. I can't generate interview dates to applicants")
+                        ui.show_cant_generate_data("interviews date")
 
                 elif chosen_administrator_menu == "0":
                     ui.clear_sreen()
                     break
 
                 else:
-                    print("Wrong menu number was given")
+                    ui.show_wrong_number()
 
         elif chosen_menu == "2":
             mentor_details = MentorDetails()
@@ -69,20 +68,20 @@ def main():
             chosen_mentor_menu = 'q'
 
             while chosen_mentor_menu != "0":
-                ui.print_mentor_menu()
+                ui.show_mentor_menu()
                 chosen_mentor_menu = ui.choose_mentor_menu_number()
 
                 if chosen_mentor_menu == '1':
                     try:
                         mentor_details.mentor_date_time()
                     except:
-                        print("There is no mentor with that id")
+                        ui.show_wrong_mentor_id()
 
                 elif chosen_mentor_menu == '0':
                     ui.clear_sreen()
                     break
                 else:
-                    print("Wrong menu number was given")
+                    ui.show_wrong_number()
 
         elif chosen_menu == '3':
             # Create instances
@@ -91,39 +90,38 @@ def main():
             chosen_applicant_menu = 'q'
 
             while chosen_applicant_menu != '0':
-                ui.print_applicant_menu()
+                ui.show_applicant_menu()
                 chosen_applicant_menu = ui.choose_applicant_menu_number()
 
                 if chosen_applicant_menu == '1':
                     try:
                         applicant_detail.interview_details()
                     except:
-                        print("There is no application code like that in the database. Please try again")
+                        ui.show_wrong_app_code()
 
                 elif chosen_applicant_menu == '2':
                     try:
                         applicant_detail.status_details()
                     except:
-                        print("There is no application code like that in the database. Please try again")
+                        ui.show_wrong_app_code()
 
                 elif chosen_applicant_menu == '3':
                     try:
                         applicant_detail.school_details()
                     except:
-                        print("There is no application code like that in the database. Please try again")
+                        ui.show_wrong_app_code()
 
                 elif chosen_applicant_menu == '0':
                     ui.clear_sreen()
                     break
 
                 else:
-                    print("Wrong menu number was given")
+                    ui.show_wrong_number()
 
         elif chosen_menu == '0':
-            ui.print_say_hello()
+            ui.show_say_hello()
         else:
-            print("Wrong menu number was given")
-
+            ui.show_wrong_number()
 
 if __name__ == '__main__':
     main()

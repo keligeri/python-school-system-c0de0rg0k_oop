@@ -7,8 +7,6 @@ class AppCodeGenerator:
         then compare the earlier password, if the current app code equal with the earlier, generate a new one """
 
     def __init__(self):
-        # First, generate the application_code, then compare the earlier password
-        # if tha current app code equal with the earlier, generate a new one
         self.__earlier_app_code = []
         self.__query_the_earliest_app_code()
         self.__is_valid_pass = False

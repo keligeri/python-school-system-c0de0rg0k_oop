@@ -2,7 +2,7 @@ import os
 
 
 class UserInterface:
-    """This class contain the necessary print methods"""
+    """This class contain the necessary print methods, and inputs method for the main"""
 
     def clear_sreen(self):
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -23,7 +23,7 @@ class UserInterface:
         chosen_applicant_menu = input("Please choose an Administrator menu number: ")
         return chosen_applicant_menu
 
-    def print_main_menu(self):
+    def show_main_menu(self):
         print("\n- - - School system - Main Menu - - -\n-------------------------------------")
         print("1. I am an administrator")
         print("2. I am a mentor")
@@ -31,7 +31,7 @@ class UserInterface:
         print("0. Exit")
         print("-------------------------------")
 
-    def print_administrator_menu(self):
+    def show_administrator_menu(self):
         print("\n- - - School system - Administrator Menu - - -\n-------------------------------------")
         print("1. Create tables")
         print("2. Generate data")
@@ -40,13 +40,13 @@ class UserInterface:
         print("0. Exit")
         print("-------------------------------------")
 
-    def print_mentor_menu(self):
+    def show_mentor_menu(self):
         print("\n- - - School system - Mentor Menu - - -\n-------------------------------------")
         print("1. Interviews")
         print("0. Exit")
         print("-------------------------------------")
 
-    def print_applicant_menu(self):
+    def show_applicant_menu(self):
         print("\n- - - School system - Applicant Menu - - -\n-------------------------------------")
         print("1. Interview details")
         print("2. Status details")
@@ -54,7 +54,26 @@ class UserInterface:
         print("0. Exit")
         print("-------------------------------------")
 
-    def print_say_hello(self):
+    def show_say_hello(self):
         print("\n------------------------------------------------------------")
         print("| Thanks for choosing Codeorgo Software! See you next time!|")
         print("------------------------------------------------------------")
+
+    def show_generetad_data(self, data_type, inserted_needed=True):
+        if inserted_needed is True:
+            print("{0} successfully generated and inserted!".format(data_type))
+        else:
+            print("{0} successfully generated!".format(data_type))
+
+    def show_cant_generate_data(self, data_type):
+        print("Something went wrong. I can't generate {0} :(".format(data_type))
+
+    def show_wrong_number(self):
+        print("Wrong menu number was given")
+
+    def show_wrong_mentor_id(self):
+        print("There is no mentor with that id")
+
+    def show_wrong_app_code(self):
+        print("There is no application code like that in the database. Please try again")
+

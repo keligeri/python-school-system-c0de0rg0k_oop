@@ -24,7 +24,7 @@ def main():
 
             while chosen_administrator_menu != "0":
                 ui.show_administrator_menu()
-                chosen_administrator_menu = ui.choose_administrator_menu_number()
+                chosen_administrator_menu = ui.choose_submenu_number("Administrator")
 
                 if chosen_administrator_menu == "1":
                     try:
@@ -69,13 +69,13 @@ def main():
 
             while chosen_mentor_menu != "0":
                 ui.show_mentor_menu()
-                chosen_mentor_menu = ui.choose_mentor_menu_number()
+                chosen_mentor_menu = ui.choose_submenu_number("Mentor")
 
                 if chosen_mentor_menu == '1':
                     try:
                         mentor_details.mentor_date_time()
                     except:
-                        ui.show_wrong_mentor_id()
+                        ui.show_cant_found("mentor id")
 
                 elif chosen_mentor_menu == '0':
                     ui.clear_sreen()
@@ -91,25 +91,25 @@ def main():
 
             while chosen_applicant_menu != '0':
                 ui.show_applicant_menu()
-                chosen_applicant_menu = ui.choose_applicant_menu_number()
+                chosen_applicant_menu = ui.choose_submenu_number("Applicant")
 
                 if chosen_applicant_menu == '1':
                     try:
                         applicant_detail.interview_details()
                     except:
-                        ui.show_wrong_app_code()
+                        ui.show_cant_found("applicant code")
 
                 elif chosen_applicant_menu == '2':
                     try:
                         applicant_detail.status_details()
                     except:
-                        ui.show_wrong_app_code()
+                        ui.show_cant_found("applicant code")
 
                 elif chosen_applicant_menu == '3':
                     try:
                         applicant_detail.school_details()
                     except:
-                        ui.show_wrong_app_code()
+                        ui.show_cant_found("applicant code")
 
                 elif chosen_applicant_menu == '0':
                     ui.clear_sreen()

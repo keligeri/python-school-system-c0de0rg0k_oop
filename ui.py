@@ -11,17 +11,9 @@ class UserInterface:
         chosen_menu = input("Please choose a menu number: ")
         return chosen_menu
 
-    def choose_administrator_menu_number(self):
-        chosen_administrator_menu = input("Please choose an Administrator menu number: ")
-        return chosen_administrator_menu
-
-    def choose_mentor_menu_number(self):
-        chosen_mentor_menu = input("Please choose an Administrator menu number: ")
-        return chosen_mentor_menu
-
-    def choose_applicant_menu_number(self):
-        chosen_applicant_menu = input("Please choose an Administrator menu number: ")
-        return chosen_applicant_menu
+    def choose_submenu_number(self, role):
+        chosen_submenu = input("Please choose an {0} menu number: ".format(role))
+        return chosen_submenu
 
     def show_main_menu(self):
         print("\n- - - School system - Main Menu - - -\n-------------------------------------")
@@ -68,12 +60,8 @@ class UserInterface:
     def show_cant_generate_data(self, data_type):
         print("Something went wrong. I can't generate {0} :(".format(data_type))
 
+    def show_cant_found(self, identification):
+        print("There is no {0} like that in the database. Please try again".format(identification))
+
     def show_wrong_number(self):
         print("Wrong menu number was given")
-
-    def show_wrong_mentor_id(self):
-        print("There is no mentor with that id")
-
-    def show_wrong_app_code(self):
-        print("There is no application code like that in the database. Please try again")
-

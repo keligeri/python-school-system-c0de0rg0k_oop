@@ -2,7 +2,7 @@ from create_table import CreateTable
 from applicant_generator import ApplicantGenerator
 from mentor_details import MentorDetails
 from applicant_details import ApplicantDetails
-from self.ui.import UserInterface
+from ui import UserInterface
 
 
 class Main:
@@ -46,21 +46,18 @@ class Main:
                     self.ui.show_generetad_data("Tables", False)
                 except:
                     self.ui.show_cant_generate_data("tables")
-
             elif chosen_administrator_menu == "2":
                 try:
                     create_and_upload_table.generate_example_data()
                     self.ui.show_generetad_data("Example data")
                 except:
                     self.ui.show_cant_generate_data("example data")
-
             elif chosen_administrator_menu == "3":
                 try:
                     generate_applicants.generate_applicant()
                     self.ui.show_generetad_data("Applicants data")
                 except:
                     self.ui.show_cant_generate_data("applicants data")
-
             elif chosen_administrator_menu == "4":
                 try:
                     generate_applicants.generate_nearest_school()
@@ -84,7 +81,6 @@ class Main:
         while chosen_mentor_menu != "0":
             self.ui.show_mentor_menu()
             chosen_mentor_menu = self.ui.choose_submenu_number("Mentor")
-
             if chosen_mentor_menu == '1':
                 try:
                     mentor_details.mentor_date_time()
@@ -118,7 +114,6 @@ class Main:
                     applicant_detail.status_details()
                 except:
                     self.ui.show_cant_found("applicant code")
-
             elif chosen_applicant_menu == '3':
                 try:
                     applicant_detail.school_details()
